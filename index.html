@@ -3,368 +3,358 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>家用电梯选购指南 - 找到最适合您的别墅电梯</title>
+    <meta name="description" content="家用电梯选购决策平台 — 不站品牌立场，只帮你找到最适合的别墅电梯。覆盖易家、格尔森、怡安、科锐曼四大品牌深度对比。">
+    <title>家用电梯选购指南 | 找到最适合你的别墅电梯</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#1a1a2e',
-                        secondary: '#16213e',
-                        accent: '#e94560',
-                        gold: '#d4af37',
+                        brand: {
+                            navy: '#0f1729',
+                            dark: '#1a2740',
+                            gold: '#c9a84c',
+                            'gold-light': '#e8d48b',
+                            cream: '#faf8f5',
+                            sand: '#f0ece4',
+                            ink: '#1e1e1e',
+                            muted: '#6b7280',
+                        }
                     },
                     fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        sans: ['"Noto Sans SC"', 'system-ui', '-apple-system', 'sans-serif'],
                     },
                 }
             }
         }
     </script>
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .content-auto {
-                content-visibility: auto;
-            }
-            .text-shadow {
-                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            }
-            .gradient-bg {
-                background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            }
-            .card-hover {
-                transition: all 0.3s ease;
-            }
-            .card-hover:hover {
-                transform: translateY(-8px);
-                box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-            }
-        }
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Sans SC', system-ui, -apple-system, sans-serif; }
+        .hero-gradient { background: linear-gradient(160deg, #0f1729 0%, #1a2740 40%, #152238 100%); }
+        .gold-gradient { background: linear-gradient(135deg, #c9a84c 0%, #e8d48b 50%, #b8942e 100%); }
+        .gold-text { background: linear-gradient(135deg, #c9a84c, #e8d48b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .card-lift { transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .card-lift:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(0,0,0,0.12); }
+        .nav-blur { backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+        .fade-in { animation: fadeIn 0.8s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .section-pad { padding: 5rem 1.5rem; }
+        @media (min-width: 768px) { .section-pad { padding: 7rem 2rem; } }
+        .divider-gold { width: 48px; height: 3px; background: linear-gradient(90deg, #c9a84c, #e8d48b); border-radius: 2px; }
+        ::selection { background: #c9a84c33; }
     </style>
 </head>
-<body class="bg-gray-50 font-sans">
-    <!-- 导航栏 -->
-    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex items-center">
-                    <span class="text-2xl font-bold text-white">家用电梯</span>
-                    <span class="ml-2 text-gold text-sm">选购指南</span>
-                </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="brands.html" class="text-white/80 hover:text-white transition">品牌库</a>
-                    <a href="#scenario" class="text-white/80 hover:text-white transition">场景选梯</a>
-                    <a href="#faq" class="text-white/80 hover:text-white transition">常见问题</a>
-                    <a href="#agent" class="bg-gold text-primary px-6 py-2 rounded-full font-medium hover:bg-yellow-500 transition">代理商入驻</a>
-                </div>
-                <button class="md:hidden text-white text-2xl">
-                    <i class="fa fa-bars"></i>
-                </button>
-            </div>
-        </div>
-    </nav>
+<body class="bg-brand-cream text-brand-ink antialiased">
 
-    <!-- Hero 区域 -->
-    <section class="gradient-bg min-h-screen flex items-center relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10">
-            <div class="absolute top-20 left-10 w-72 h-72 bg-gold rounded-full filter blur-3xl"></div>
-            <div class="absolute bottom-20 right-10 w-96 h-96 bg-accent rounded-full filter blur-3xl"></div>
-        </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="text-white">
-                    <div class="inline-block bg-gold/20 text-gold px-4 py-2 rounded-full text-sm mb-6">
-                        <i class="fa fa-star mr-2"></i>已帮助 10,000+ 家庭找到合适的电梯
-                    </div>
-                    <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold leading-tight mb-6 text-shadow">
-                        没有完美的品牌<br/>
-                        <span class="text-gold">只有适合你的才是最好的</span>
-                    </h1>
-                    <p class="text-white/70 text-lg mb-8 leading-relaxed">
-                        我们不推销任何品牌，只帮你找到最适合户型、预算、使用场景的家用电梯解决方案。从螺杆、曳引、液压，一目了然。
-                    </p>
-                    <div class="flex flex-wrap gap-4">
-                        <a href="场景选梯.html" class="bg-gold text-primary px-8 py-4 rounded-full font-bold text-lg hover:bg-yellow-500 transition shadow-lg shadow-gold/30">
-                            开始选梯
-                        </a>
-                        <a href="#brands" class="border-2 border-white/30 text-white px-8 py-4 rounded-full font-medium hover:bg-white/10 transition">
-                            对比品牌
-                        </a>
-                    </div>
-                </div>
-                <div class="hidden md:block">
-                    <div class="relative">
-                        <div class="w-full h-96 bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl shadow-2xl flex items-center justify-center">
-                            <div class="text-center">
-                                <i class="fa fa-home text-6xl text-gold/50 mb-4"></i>
-                                <p class="text-white/50">家用电梯示意图</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<!-- Navigation -->
+<nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-18">
+            <a href="index.html" class="flex items-center gap-2">
+                <span class="text-xl font-bold text-white tracking-tight">HOME<span class="text-brand-gold">LIFT</span></span>
+                <span class="hidden sm:inline text-xs text-white/50 border border-white/20 rounded px-2 py-0.5">选购决策平台</span>
+            </a>
+            <div class="hidden md:flex items-center space-x-1">
+                <a href="index.html" class="text-white/90 hover:text-brand-gold px-4 py-2 text-sm font-medium transition">首页</a>
+                <a href="wiki.html" class="text-white/75 hover:text-brand-gold px-4 py-2 text-sm transition">电梯百科</a>
+                <a href="brands.html" class="text-white/75 hover:text-brand-gold px-4 py-2 text-sm transition">品牌库</a>
+                <a href="场景选梯.html" class="text-white/75 hover:text-brand-gold px-4 py-2 text-sm transition">场景选梯</a>
+                <a href="场景选梯.html" class="ml-3 bg-brand-gold text-brand-navy px-5 py-2 rounded-full text-sm font-semibold hover:bg-brand-gold-light transition shadow-lg shadow-brand-gold/20">
+                    开始选梯 <i class="fa-solid fa-arrow-right ml-1 text-xs"></i>
+                </a>
             </div>
+            <button class="md:hidden text-white text-xl" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+                <i class="fa-solid fa-bars"></i>
+            </button>
         </div>
-    </section>
+        <div id="mobileMenu" class="hidden md:hidden pb-4 space-y-2">
+            <a href="wiki.html" class="block text-white/75 hover:text-brand-gold py-2 text-sm">电梯百科</a>
+            <a href="brands.html" class="block text-white/75 hover:text-brand-gold py-2 text-sm">品牌库</a>
+            <a href="场景选梯.html" class="block text-white/75 hover:text-brand-gold py-2 text-sm">场景选梯</a>
+        </div>
+    </div>
+</nav>
 
-    <!-- 信任背书 -->
-    <section class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">为什么相信我们？</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">中立、专业、透明 — 这就是我们的立场</p>
+<!-- Hero -->
+<section class="hero-gradient min-h-screen flex items-center relative overflow-hidden">
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 30% 50%, #c9a84c 1px, transparent 1px); background-size: 40px 40px;"></div>
+    <div class="absolute top-1/4 -right-40 w-[600px] h-[600px] bg-brand-gold/5 rounded-full blur-[120px]"></div>
+    <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/3 rounded-full blur-[100px]"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+        <div class="max-w-3xl fade-in">
+            <div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-2 mb-8">
+                <span class="w-2 h-2 bg-brand-gold rounded-full animate-pulse"></span>
+                <span class="text-white/70 text-sm">已服务 10,000+ 家庭的电梯选购决策</span>
             </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="text-center p-8 card-hover bg-gray-50 rounded-2xl">
-                    <div class="w-16 h-16 bg-gold/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                        <i class="fa fa-balance-scale text-2xl text-gold"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">100% 中立</h3>
-                    <p class="text-gray-600">不隶属于任何电梯品牌，我们的推荐只基于事实与您的真实需求</p>
-                </div>
-                <div class="text-center p-8 card-hover bg-gray-50 rounded-2xl">
-                    <div class="w-16 h-16 bg-gold/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                        <i class="fa fa-database text-2xl text-gold"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">全网数据</h3>
-                    <p class="text-gray-600">覆盖主流品牌深度调研，参数、价格、口碑一次对比清楚</p>
-                </div>
-                <div class="text-center p-8 card-hover bg-gray-50 rounded-2xl">
-                    <div class="w-16 h-16 bg-gold/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                        <i class="fa fa-shield text-2xl text-gold"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">全程免费</h3>
-                    <p class="text-gray-600">从咨询、对比、推荐，全程不收取任何费用</p>
-                </div>
+            <h1 class="text-[clamp(2.2rem,5.5vw,4.2rem)] font-extrabold leading-[1.12] text-white mb-6 tracking-tight">
+                没有完美的品牌<br>
+                <span class="gold-text">只有适合你的</span><span class="text-white">才是最好的</span>
+            </h1>
+            <p class="text-white/55 text-lg md:text-xl mb-10 leading-relaxed max-w-xl">
+                我们不卖电梯，只帮你搞清楚：你家的情况，该选什么驱动、什么品牌、花多少钱。
+            </p>
+            <div class="flex flex-wrap gap-4">
+                <a href="场景选梯.html" class="inline-flex items-center gap-2 bg-brand-gold hover:bg-brand-gold-light text-brand-navy px-8 py-4 rounded-full font-bold text-lg transition shadow-2xl shadow-brand-gold/25">
+                    3分钟智能选梯 <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <a href="brands.html" class="inline-flex items-center gap-2 border-2 border-white/20 hover:border-white/40 text-white px-8 py-4 rounded-full font-medium text-lg transition">
+                    对比品牌 <i class="fa-solid fa-magnifying-glass-chart"></i>
+                </a>
             </div>
-        </div>
-    </section>
-
-    <!-- 品牌对比 -->
-    <section id="brands" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">主流品牌对比</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">科锐曼、格尔森、怡安、易家，四大品牌一次看清</p>
-            </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white rounded-2xl shadow-lg p-8 card-hover">
-                    <div class="text-center mb-6">
-                        <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-                            <span class="text-blue-600 font-bold text-xl">科</span>
-                        </div>
-                        <h3 class="text-xl font-bold">科锐曼</h3>
-                        <p class="text-gray-500 text-sm">螺杆电梯专家</p>
-                    </div>
-                    <div class="space-y-3 text-sm">
-                        <div class="flex justify-between">
-                            <span class="text-gray-500">驱动类型</span>
-                            <span class="font-medium">螺杆式</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-500">适用层高</span>
-                            <span class="font-medium">2-4层</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-500">预算区间</span>
-                            <span class="font-medium">12-18万</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-500">优势场景</span>
-                            <span class="font-medium">顶楼/复式</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-white rounded-2xl shadow-lg p-8 card-hover">
-                    <div class="text-center mb-6">
-                        <div class="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-                            <span class="text-green-600 font-bold text-xl">格</span>
-                        </div>
-                        <h3 class="text-xl font-bold">格尔森</h3>
-                        <p class="text-gray-500 text-sm">工厂直供</p>
-                    </div>
-                    <div class="space-y-3 text-sm">
-                        <div class="flex justify-between">
-                            <span class="text-gray-500">驱动类型</span>
-                            <span class="font-medium">曳引式</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-500">适用层高</span>
-                            <span class="font-medium">2-5层</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-500">预算区间</span>
-                            <span class="font-medium">15-25万</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-500">优势场景</span>
-                            <span class="font-medium">非标定制</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-white rounded-2xl shadow-lg p-8 card-hover">
-                    <div class="text-center mb-6">
-                        <div class="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-                            <span class="text-purple-600 font-bold text-xl">怡</span>
-                        </div>
-                        <h3 class="text-xl font-bold">怡安</h3>
-                        <p class="text-gray-500 text-sm">极限非标</p>
-                    </div>
-                    <div class="space-y-3 text-sm">
-                        <div class="flex justify-between">
-                            <span class="text-gray-500">驱动类型</span>
-                            <span class="font-medium">曳引/液压</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-500">适用层高</span>
-                            <span class="font-medium">2-6层</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-500">预算区间</span>
-                            <span class="font-medium">18-35万</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-500">优势场景</span>
-                            <span class="font-medium">特殊定制</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-white rounded-2xl shadow-lg p-8 card-hover">
-                    <div class="text-center mb-6">
-                        <div class="w-16 h-16 bg-orange-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-                            <span class="text-orange-600 font-bold text-xl">易</span>
-                        </div>
-                        <h3 class="text-xl font-bold">易家 Eachar</h3>
-                        <p class="text-gray-500 text-sm">高性价比</p>
-                    </div>
-                    <div class="space-y-3 text-sm">
-                        <div class="flex justify-between">
-                            <span class="text-gray-500">驱动类型</span>
-                            <span class="font-medium">曳引式</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-500">适用层高</span>
-                            <span class="font-medium">2-4层</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-500">预算区间</span>
-                            <span class="font-medium">10-15万</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-500">优势场景</span>
-                            <span class="font-medium">标准户型</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="flex gap-8 mt-14 pt-10 border-t border-white/8">
+                <div><span class="text-brand-gold text-2xl font-bold">4</span><span class="text-white/40 text-sm ml-1">大品牌</span></div>
+                <div><span class="text-brand-gold text-2xl font-bold">300+</span><span class="text-white/40 text-sm ml-1">经销商</span></div>
+                <div><span class="text-brand-gold text-2xl font-bold">30</span><span class="text-white/40 text-sm ml-1">城覆盖</span></div>
+                <div><span class="text-brand-gold text-2xl font-bold">100%</span><span class="text-white/40 text-sm ml-1">中立</span></div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- CTA 区域 -->
-    <section class="py-20 gradient-bg">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">不知道选哪个品牌？</h2>
-            <p class="text-white/70 text-lg mb-8">3 分钟帮你精准匹配最适合的电梯方案</p>
-            <a href="场景选梯.html" class="inline-block bg-gold text-primary px-10 py-4 rounded-full font-bold text-lg hover:bg-yellow-500 transition shadow-lg shadow-gold/30">
-                开始智能选梯 <i class="fa fa-arrow-right ml-2"></i>
+<!-- Three Entry Cards -->
+<section class="relative -mt-20 z-20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-3 gap-5">
+            <a href="wiki.html" class="group bg-white rounded-2xl p-8 shadow-xl shadow-black/3 card-lift block">
+                <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-5 group-hover:bg-blue-100 transition">
+                    <i class="fa-solid fa-book-open text-blue-600 text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2 group-hover:text-brand-navy transition">电梯百科</h3>
+                <p class="text-brand-muted text-sm leading-relaxed">四种驱动方式、安全配置、价格构成 —— 零基础搞懂家用电梯</p>
+                <span class="inline-flex items-center gap-1 text-brand-gold text-sm font-medium mt-4 group-hover:gap-2 transition-all">了解更多 <i class="fa-solid fa-chevron-right text-xs"></i></span>
+            </a>
+            <a href="场景选梯.html" class="group bg-white rounded-2xl p-8 shadow-xl shadow-black/3 card-lift block">
+                <div class="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center mb-5 group-hover:bg-amber-100 transition">
+                    <i class="fa-solid fa-compass text-amber-600 text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2 group-hover:text-brand-navy transition">场景选梯</h3>
+                <p class="text-brand-muted text-sm leading-relaxed">回答几个问题，系统自动匹配最适合你的电梯方案</p>
+                <span class="inline-flex items-center gap-1 text-brand-gold text-sm font-medium mt-4 group-hover:gap-2 transition-all">开始匹配 <i class="fa-solid fa-chevron-right text-xs"></i></span>
+            </a>
+            <a href="brands.html" class="group bg-white rounded-2xl p-8 shadow-xl shadow-black/3 card-lift block">
+                <div class="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center mb-5 group-hover:bg-emerald-100 transition">
+                    <i class="fa-solid fa-layer-group text-emerald-600 text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2 group-hover:text-brand-navy transition">品牌库</h3>
+                <p class="text-brand-muted text-sm leading-relaxed">易家、格尔森、怡安、科锐曼 —— 四大品牌深度对比，一表看清</p>
+                <span class="inline-flex items-center gap-1 text-brand-gold text-sm font-medium mt-4 group-hover:gap-2 transition-all">对比品牌 <i class="fa-solid fa-chevron-right text-xs"></i></span>
             </a>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- 代理商入驻 -->
-    <section id="agent" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="text-3xl font-bold text-gray-900 mb-6">代理商入驻</h2>
-                    <p class="text-gray-600 mb-8 text-lg">
-                        如果你是电梯代理商，希望对接精准客户资源，欢迎加入我们的代理商网络。
-                    </p>
-                    <ul class="space-y-4">
-                        <li class="flex items-start">
-                            <i class="fa fa-check-circle text-gold mt-1 mr-3"></i>
-                            <span class="text-gray-700">精准客户对接，按效果付费</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fa fa-check-circle text-gold mt-1 mr-3"></i>
-                            <span class="text-gray-700">品牌展示专区，提升曝光度</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fa fa-check-circle text-gold mt-1 mr-3"></i>
-                            <span class="text-gray-700">客户评价体系，建立信任背书</span>
-                        </li>
-                    </ul>
-                    <a href="代理商入驻表单.html" class="mt-8 inline-block bg-primary text-white px-8 py-3 rounded-full font-medium hover:bg-primary/90 transition">
-                        立即入驻
-                    </a>
+<!-- Trust Section -->
+<section class="section-pad bg-white">
+    <div class="max-w-5xl mx-auto text-center">
+        <div class="divider-gold mx-auto mb-6"></div>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 tracking-tight">为什么信赖我们？</h2>
+        <p class="text-brand-muted text-lg max-w-xl mx-auto mb-14">中立、专业、透明 — 这就是我们的立场</p>
+        <div class="grid md:grid-cols-4 gap-8">
+            <div class="text-center">
+                <div class="w-16 h-16 bg-brand-cream rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <i class="fa-solid fa-scale-balanced text-2xl text-brand-gold"></i>
                 </div>
-                <div class="bg-gray-100 rounded-2xl p-8">
-                    <div class="text-center">
-                        <i class="fa fa-handshake-o text-5xl text-gold mb-4"></i>
-                        <h3 class="text-xl font-bold mb-2">已有 <span class="text-gold">50+</span> 代理商已加入</h3>
-                        <p class="text-gray-500">覆盖全国 30 个城市</p>
-                    </div>
+                <h4 class="font-bold mb-2">100% 中立</h4>
+                <p class="text-brand-muted text-sm">不隶属任何品牌，推荐只基于事实与需求</p>
+            </div>
+            <div class="text-center">
+                <div class="w-16 h-16 bg-brand-cream rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <i class="fa-solid fa-database text-2xl text-brand-gold"></i>
                 </div>
+                <h4 class="font-bold mb-2">全网数据</h4>
+                <p class="text-brand-muted text-sm">深度调研覆盖主流品牌，参数价格一次对比</p>
+            </div>
+            <div class="text-center">
+                <div class="w-16 h-16 bg-brand-cream rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <i class="fa-solid fa-shield-halved text-2xl text-brand-gold"></i>
+                </div>
+                <h4 class="font-bold mb-2">全程免费</h4>
+                <p class="text-brand-muted text-sm">咨询、对比、推荐，全程不收取任何费用</p>
+            </div>
+            <div class="text-center">
+                <div class="w-16 h-16 bg-brand-cream rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <i class="fa-solid fa-user-tie text-2xl text-brand-gold"></i>
+                </div>
+                <h4 class="font-bold mb-2">行业深耕</h4>
+                <p class="text-brand-muted text-sm">电梯行业资深从业者，懂技术更懂市场</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- 页脚 -->
-    <footer class="bg-primary text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8">
-                <div>
-                    <h4 class="text-lg font-bold mb-4">家用电梯选购指南</h4>
-                    <p class="text-white/60 text-sm">中立、专业、透明的家用电梯第三方平台</p>
-                </div>
-                <div>
-                    <h4 class="font-medium mb-4">快速链接</h4>
-                    <ul class="space-y-2 text-white/60 text-sm">
-                        <li><a href="#brands" class="hover:text-white">品牌对比</a></li>
-                        <li><a href="场景选梯.html" class="hover:text-white">智能选梯</a></li>
-                        <li><a href="#faq" class="hover:text-white">常见问题</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-medium mb-4">代理商</h4>
-                    <ul class="space-y-2 text-white/60 text-sm">
-                        <li><a href="代理商入驻表单.html" class="hover:text-white">入驻申请</a></li>
-                        <li><a href="#" class="hover:text-white">合作说明</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-medium mb-4">联系我们</h4>
-                    <p class="text-white/60 text-sm">有问题？随时联系我们</p>
-                </div>
+<!-- Brand Quick Compare -->
+<section class="section-pad bg-brand-cream">
+    <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-14">
+            <div class="divider-gold mx-auto mb-6"></div>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 tracking-tight">四大品牌速览</h2>
+            <p class="text-brand-muted text-lg">科锐曼、格尔森、怡安、易家，一表看清差异</p>
+        </div>
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+            <table class="w-full text-sm">
+                <thead>
+                    <tr class="bg-brand-navy text-white">
+                        <th class="py-5 px-6 text-left font-semibold">对比维度</th>
+                        <th class="py-5 px-4 text-center font-semibold">易家 Eachar</th>
+                        <th class="py-5 px-4 text-center font-semibold">格尔森</th>
+                        <th class="py-5 px-4 text-center font-semibold">怡安</th>
+                        <th class="py-5 px-4 text-center font-semibold">科锐曼</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100">
+                    <tr>
+                        <td class="py-4 px-6 font-semibold text-brand-ink">一句话定位</td>
+                        <td class="py-4 px-4 text-center">品质均衡，价格友好</td>
+                        <td class="py-4 px-4 text-center">工厂大，非标强</td>
+                        <td class="py-4 px-4 text-center">极限定制，什么都能做</td>
+                        <td class="py-4 px-4 text-center">螺杆专家，复式首选</td>
+                    </tr>
+                    <tr class="bg-gray-50/50">
+                        <td class="py-4 px-6 font-semibold text-brand-ink">技术路线</td>
+                        <td class="py-4 px-4 text-center">曳引驱动</td>
+                        <td class="py-4 px-4 text-center">曳引驱动</td>
+                        <td class="py-4 px-4 text-center">曳引/液压</td>
+                        <td class="py-4 px-4 text-center">电缸螺杆</td>
+                    </tr>
+                    <tr>
+                        <td class="py-4 px-6 font-semibold text-brand-ink">价格带</td>
+                        <td class="py-4 px-4 text-center font-medium">10-20万</td>
+                        <td class="py-4 px-4 text-center font-medium">15-25万</td>
+                        <td class="py-4 px-4 text-center font-medium">18-35万</td>
+                        <td class="py-4 px-4 text-center font-medium">12-18万</td>
+                    </tr>
+                    <tr class="bg-gray-50/50">
+                        <td class="py-4 px-6 font-semibold text-brand-ink">非标能力</td>
+                        <td class="py-4 px-4 text-center">⭐⭐</td>
+                        <td class="py-4 px-4 text-center">⭐⭐⭐⭐</td>
+                        <td class="py-4 px-4 text-center">⭐⭐⭐⭐⭐</td>
+                        <td class="py-4 px-4 text-center">⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td class="py-4 px-6 font-semibold text-brand-ink">最适合谁</td>
+                        <td class="py-4 px-4 text-center text-xs">预算敏感<br>追求品质均衡</td>
+                        <td class="py-4 px-4 text-center text-xs">复杂定制需求<br>对品质要求高</td>
+                        <td class="py-4 px-4 text-center text-xs">井道条件苛刻<br>别人做不了的</td>
+                        <td class="py-4 px-4 text-center text-xs">顶楼复式<br>无底坑需求</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="text-center mt-8">
+            <a href="brands.html" class="inline-flex items-center gap-2 text-brand-gold hover:text-brand-navy font-semibold transition">
+                查看完整品牌对比 <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Quick -->
+<section class="section-pad bg-white">
+    <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-14">
+            <div class="divider-gold mx-auto mb-6"></div>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 tracking-tight">你最关心的 5 个问题</h2>
+            <p class="text-brand-muted text-lg">直接回答，不绕弯子</p>
+        </div>
+        <div class="space-y-4">
+            <details class="group bg-brand-cream rounded-2xl p-6 cursor-pointer" open>
+                <summary class="font-bold text-lg list-none flex justify-between items-center">
+                    家用电梯大概多少钱？
+                    <i class="fa-solid fa-chevron-down group-open:rotate-180 transition-transform text-brand-gold"></i>
+                </summary>
+                <p class="mt-4 text-brand-muted leading-relaxed">国产主流品牌设备价 10-20 万区间，但总价要算上安装、运输、井道施工、验收。标准井道+曳引方案，全包落地约 15-25 万。螺杆方案因结构简单，总价通常低 2-5 万。建议要求报价含「设备+安装+运输+调试+验收」全包，避免后期加钱。</p>
+            </details>
+            <details class="group bg-brand-cream rounded-2xl p-6 cursor-pointer">
+                <summary class="font-bold text-lg list-none flex justify-between items-center">
+                    螺杆电梯和曳引电梯怎么选？
+                    <i class="fa-solid fa-chevron-down group-open:rotate-180 transition-transform text-brand-gold"></i>
+                </summary>
+                <p class="mt-4 text-brand-muted leading-relaxed">简单说：有井道选曳引，没井道/没底坑选螺杆。曳引式速度快（0.4m/s）、噪音低（≤45dB）、节能好，是家用主流。螺杆式无需底坑（≤100mm即可）、空间省，但速度慢（约0.15m/s）、噪音偏高（≥55dB）。顶楼复式、老房加装优先考虑螺杆；别墅新房首选曳引。</p>
+            </details>
+            <details class="group bg-brand-cream rounded-2xl p-6 cursor-pointer">
+                <summary class="font-bold text-lg list-none flex justify-between items-center">
+                    安全吗？困人了怎么办？
+                    <i class="fa-solid fa-chevron-down group-open:rotate-180 transition-transform text-brand-gold"></i>
+                </summary>
+                <p class="mt-4 text-brand-muted leading-relaxed">家用电梯安全标准严格（国标GB/T 21739），只要配置到位很安全。必配五项：双制动器、停电自动平层（ARD）、光幕+安全触板防夹、4G应急呼叫、门锁联动。困人时，ARD系统10秒内自动将轿厢送至最近楼层开门，不会像电影里那样悬在半空。认准国标和欧标双认证。</p>
+            </details>
+            <details class="group bg-brand-cream rounded-2xl p-6 cursor-pointer">
+                <summary class="font-bold text-lg list-none flex justify-between items-center">
+                    安装要多久？家里要大改吗？
+                    <i class="fa-solid fa-chevron-down group-open:rotate-180 transition-transform text-brand-gold"></i>
+                </summary>
+                <p class="mt-4 text-brand-muted leading-relaxed">有预留井道的新房，设备安装 3-7 天搞定。无井道的老房加装，需要先做井道施工（混凝土约15-20天，钢结构/铝合金约5-10天），整体周期 2-4 周。一体化无底坑方案对房屋改动最小，基本不需要大拆大改。</p>
+            </details>
+            <details class="group bg-brand-cream rounded-2xl p-6 cursor-pointer">
+                <summary class="font-bold text-lg list-none flex justify-between items-center">
+                    售后和维保怎么解决？
+                    <i class="fa-solid fa-chevron-down group-open:rotate-180 transition-transform text-brand-gold"></i>
+                </summary>
+                <p class="mt-4 text-brand-muted leading-relaxed">电梯寿命 10-20 年，售后比买更重要。选购时确认三点：本地有售后网点（24小时响应）、配件通用（不锁控制系统）、维保合同透明（年费约 2000-5000 元）。优先选开放系统的品牌，避免被单一供应商绑定。我们的经销商网络覆盖全国 30 城，帮你对接本地靠谱服务商。</p>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="hero-gradient py-20 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 70% 30%, #c9a84c 1px, transparent 1px); background-size: 40px 40px;"></div>
+    <div class="max-w-3xl mx-auto text-center relative z-10 px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight">不知道选哪个？</h2>
+        <p class="text-white/55 text-lg mb-10">3 分钟智能问卷，精准匹配最适合你的电梯方案</p>
+        <a href="场景选梯.html" class="inline-flex items-center gap-2 bg-brand-gold hover:bg-brand-gold-light text-brand-navy px-10 py-4 rounded-full font-bold text-lg transition shadow-2xl shadow-brand-gold/25">
+            开始智能选梯 <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <p class="text-white/25 text-sm mt-6">全程免费 · 无任何推销 · 你的信息仅用于匹配方案</p>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-brand-navy text-white py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-10">
+            <div>
+                <h4 class="text-lg font-bold mb-4">HOME<span class="text-brand-gold">LIFT</span></h4>
+                <p class="text-white/40 text-sm leading-relaxed">中立、专业、透明的家用电梯选购决策平台。不站品牌立场，只站消费者立场。</p>
             </div>
-            <div class="border-t border-white/10 mt-12 pt-8 text-center text-white/40 text-sm">
-                © 2024 家用电梯选购指南. All rights reserved.
+            <div>
+                <h4 class="font-semibold mb-4 text-white/70">消费者入口</h4>
+                <ul class="space-y-2.5 text-white/40 text-sm">
+                    <li><a href="wiki.html" class="hover:text-brand-gold transition">电梯百科</a></li>
+                    <li><a href="场景选梯.html" class="hover:text-brand-gold transition">场景选梯</a></li>
+                    <li><a href="brands.html" class="hover:text-brand-gold transition">品牌库</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 text-white/70">经销商入口</h4>
+                <ul class="space-y-2.5 text-white/40 text-sm">
+                    <li><a href="代理商入驻表单.html" class="hover:text-brand-gold transition">入驻申请</a></li>
+                    <li><a href="#" class="hover:text-brand-gold transition">合作说明</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 text-white/70">关于我们</h4>
+                <p class="text-white/40 text-sm leading-relaxed">电梯行业资深从业者创办，专注家用电梯选购决策服务。覆盖全国 30 城，合作经销商 300+。</p>
             </div>
         </div>
-    </footer>
+        <div class="border-t border-white/8 mt-12 pt-8 text-center text-white/25 text-sm">
+            © 2026 HOMELIFT 家用电梯选购指南. 保留所有权利。
+        </div>
+    </div>
+</footer>
 
-    <script>
-        // 导航栏滚动效果
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('bg-primary/95', 'backdrop-blur-sm', 'shadow-lg');
-            } else {
-                navbar.classList.remove('bg-primary/95', 'backdrop-blur-sm', 'shadow-lg');
-            }
-        });
-
-        // 平滑滚动
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-    </script>
+<script>
+    window.addEventListener('scroll', () => {
+        const nav = document.getElementById('navbar');
+        nav.classList.toggle('bg-brand-navy/90', window.scrollY > 50);
+        nav.classList.toggle('nav-blur', window.scrollY > 50);
+        nav.classList.toggle('shadow-2xl', window.scrollY > 50);
+    });
+</script>
 </body>
 </html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="家用电梯选购百科 — 四种驱动方式对比、安全配置详解、价格构成分析、避坑指南。零基础搞懂家用电梯。">
+    <title>电梯百科 | 驱动方式 · 安全配置 · 价格构成全解析</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            navy: '#0a0e17', dark: '#111827', gold: '#c9a84c', 'gold-light': '#e8d48b',
+                            cream: '#fafaf9', sand: '#f5f4f0', ink: '#171717', muted: '#737373',
+                        }
+                    },
+                    fontFamily: { sans: ['"Noto Sans SC"', 'system-ui', '-apple-system', 'sans-serif'] },
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Noto Sans SC', system-ui, -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }
+        .divider { width: 40px; height: 2px; background: #c9a84c; }
+        .prose h2 { font-size: 1.75rem; font-weight: 700; margin: 4rem 0 1.5rem; color: #0a0e17; letter-spacing: -0.02em; }
+        .prose h3 { font-size: 1.2rem; font-weight: 600; margin: 2.5rem 0 1rem; color: #171717; }
+        .prose p { margin-bottom: 1.125rem; color: #525252; line-height: 1.9; font-weight: 350; }
+        .prose ul, .prose ol { margin-bottom: 1.25rem; padding-left: 1.25rem; color: #525252; }
+        .prose li { margin-bottom: 0.5rem; line-height: 1.8; font-weight: 350; }
+        .prose strong { color: #171717; font-weight: 600; }
+        .toc-link { display: block; padding: 5px 0 5px 14px; color: #a3a3a3; font-size: 0.9rem; font-weight: 400; border-left: 2px solid transparent; transition: all 0.2s; }
+        .toc-link:hover, .toc-link.active { color: #c9a84c; border-left-color: #c9a84c; }
+        .callout { border-radius: 2px; padding: 1.5rem 1.75rem; margin: 2rem 0; font-size: 0.95rem; }
+        .callout-info { background: #f8fafc; border-left: 3px solid #3b82f6; }
+        .callout-warn { background: #fffbeb; border-left: 3px solid #c9a84c; }
+        table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-size: 0.9rem; }
+        table th { background: #0a0e17; color: #fff; padding: 1rem 1.25rem; text-align: left; font-weight: 500; font-size: 0.85rem; letter-spacing: 0.02em; }
+        table td { padding: 0.9rem 1.25rem; border-bottom: 1px solid #f0f0f0; color: #525252; }
+        table tr:hover td { background: #fafaf9; }
+        .step-card { background: #fafaf9; padding: 1.75rem; text-align: center; transition: all 0.25s; }
+        .step-card:hover { background: #f0ece4; }
+    </style>
+</head>
+<body class="bg-white text-brand-ink">
+
+<!-- Navigation -->
+<nav class="fixed w-full z-50 bg-brand-navy/95 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="flex justify-between items-center h-16">
+            <a href="index.html" class="text-lg font-bold tracking-tight text-white">HOME<span class="text-brand-gold font-light">LIFT</span></a>
+            <div class="hidden md:flex items-center space-x-8 text-sm">
+                <a href="index.html" class="text-white/60 hover:text-white transition">首页</a>
+                <a href="wiki.html" class="text-brand-gold font-medium">电梯百科</a>
+                <a href="brands.html" class="text-white/60 hover:text-white transition">品牌库</a>
+                <a href="场景选梯.html" class="text-white/60 hover:text-white transition">场景选梯</a>
+                <a href="场景选梯.html" class="bg-brand-gold text-brand-navy px-5 py-2 text-xs font-semibold tracking-wide hover:bg-brand-gold-light transition">开始选梯 →</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="bg-brand-navy pt-28 pb-20 md:pt-36 md:pb-28 text-center">
+    <div class="max-w-3xl mx-auto px-6">
+        <p class="text-brand-gold/70 text-xs tracking-[0.2em] uppercase mb-4 font-medium">ELEVATOR WIKI</p>
+        <h1 class="text-3xl md:text-5xl font-bold text-white mb-5 tracking-tight leading-tight">零基础搞懂家用电梯</h1>
+        <p class="text-white/40 text-lg font-light max-w-xl mx-auto">驱动方式 · 安全配置 · 价格构成 · 避坑指南 — 8分钟读完，心里有数</p>
+    </div>
+</section>
+
+<!-- Content -->
+<div class="max-w-6xl mx-auto px-6 lg:px-10 py-16">
+    <div class="flex gap-16">
+        <!-- Sidebar -->
+        <aside class="hidden lg:block w-48 flex-shrink-0">
+            <div class="sticky top-28">
+                <p class="text-xs tracking-widest uppercase text-brand-muted/50 mb-5 font-medium">目录</p>
+                <nav class="space-y-0">
+                    <a href="#drive" class="toc-link">驱动方式对比</a>
+                    <a href="#safety" class="toc-link">安全配置清单</a>
+                    <a href="#price" class="toc-link">价格构成详解</a>
+                    <a href="#well" class="toc-link">井道类型选择</a>
+                    <a href="#pitfalls" class="toc-link">5个常见误区</a>
+                    <a href="#steps" class="toc-link">选购五步法</a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main -->
+        <main class="flex-1 min-w-0 prose max-w-none">
+
+            <div class="callout callout-info">
+                <strong>📖 阅读提示：</strong>全文约3000字，读完约8分钟。着急选梯？直接去<a href="场景选梯.html" class="text-blue-600 font-medium underline underline-offset-2">场景选梯</a>，3分钟出方案。
+            </div>
+
+            <!-- 驱动方式 -->
+            <h2 id="drive">四种驱动方式，到底怎么选？</h2>
+            <p>驱动方式决定了电梯的安全性、舒适度和长期使用成本，是选购的<strong>第一道选择题</strong>。目前市场主流四种：永磁同步曳引式、螺杆式、液压式、卷扬机式。</p>
+
+            <table>
+                <thead><tr><th>对比维度</th><th>永磁曳引式</th><th>螺杆式</th><th>液压式</th><th>卷扬机式</th></tr></thead>
+                <tbody>
+                    <tr><td class="font-semibold">安全性</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐</td></tr>
+                    <tr><td class="font-semibold">噪音水平</td><td>≤45dB（高端25dB）</td><td>≥55dB</td><td>中等</td><td>偏高</td></tr>
+                    <tr><td class="font-semibold">运行速度</td><td>0.4 m/s</td><td>约 0.15 m/s</td><td>中等</td><td>较慢</td></tr>
+                    <tr><td class="font-semibold">底坑要求</td><td>300-600mm</td><td>≤100mm</td><td>300-500mm</td><td>200-400mm</td></tr>
+                    <tr><td class="font-semibold">节能表现</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐</td><td>⭐⭐</td><td>⭐⭐⭐</td></tr>
+                    <tr><td class="font-semibold">市场占比</td><td><span class="text-blue-600 font-semibold">≈60% 主流</span></td><td><span class="text-amber-600 font-semibold">≈35% 增长中</span></td><td><span class="text-gray-400">&lt;5%</span></td><td><span class="text-gray-400">&lt;3%</span></td></tr>
+                    <tr><td class="font-semibold">适合场景</td><td>别墅新房 / 有井道</td><td>复式 / 老房加装</td><td>已边缘化</td><td>已边缘化</td></tr>
+                </tbody>
+            </table>
+
+            <h3>永磁同步曳引式 — 家用首选</h3>
+            <p>永磁同步电机驱动钢丝绳/钢带牵引轿厢，比液压省电40%以上，噪音低至25dB。结构上分<strong>龙门架、背包架、花篮架</strong>三种，龙门架最稳定，是家用最优解。代表品牌：易家、格尔森、怡安。</p>
+
+            <h3>螺杆式 — 老房加装首选</h3>
+            <p>电机驱动螺杆旋转带动螺母升降。最大优势：<strong>几乎不需要底坑</strong>（≤100mm），井道空间利用率高。缺点是速度慢、噪音偏大，多层频繁使用体验不如曳引。代表品牌：科锐曼。</p>
+
+            <h3>液压式 & 卷扬机式 — 不推荐家用</h3>
+            <p>液压式漏油风险高、能耗大，市场占比已低于5%。卷扬机式属早期技术，安全性和舒适度均不足。</p>
+
+            <div class="callout callout-warn">
+                <strong>⚡ 快速决策：</strong>有井道 → 曳引式；没井道 / 没底坑 → 螺杆式。液压和卷扬机家用不推荐。
+            </div>
+
+            <!-- 安全配置 -->
+            <h2 id="safety">安全配置：这5项一项都不能少</h2>
+            <p>家用电梯事故中，<strong>超过70%</strong>与安装不规范或安全装置失效有关。以下配置是底线：</p>
+
+            <div class="grid md:grid-cols-2 gap-4 my-8">
+                <div class="border border-gray-100 p-6">
+                    <span class="text-brand-gold text-xs tracking-widest font-medium">01</span>
+                    <h4 class="font-semibold mt-2 mb-1">双制动器</h4>
+                    <p class="text-sm text-brand-muted font-light">2025年新规要求标配，防坠落双重保险。没有的，直接排除。</p>
+                </div>
+                <div class="border border-gray-100 p-6">
+                    <span class="text-brand-gold text-xs tracking-widest font-medium">02</span>
+                    <h4 class="font-semibold mt-2 mb-1">停电自动平层 ARD</h4>
+                    <p class="text-sm text-brand-muted font-light">断电10秒内启动，轿厢送至最近楼层自动开门，不会困在半空。</p>
+                </div>
+                <div class="border border-gray-100 p-6">
+                    <span class="text-brand-gold text-xs tracking-widest font-medium">03</span>
+                    <h4 class="font-semibold mt-2 mb-1">防夹保护</h4>
+                    <p class="text-sm text-brand-muted font-light">光幕 + 安全触板双重防护。家里有老人小孩，这是必选项。</p>
+                </div>
+                <div class="border border-gray-100 p-6">
+                    <span class="text-brand-gold text-xs tracking-widest font-medium">04</span>
+                    <h4 class="font-semibold mt-2 mb-1">4G/5G 应急呼叫</h4>
+                    <p class="text-sm text-brand-muted font-light">困人自动联网报警。不要只靠轿厢内的按钮。</p>
+                </div>
+                <div class="border border-gray-100 p-6 md:col-span-2">
+                    <span class="text-brand-gold text-xs tracking-widest font-medium">05</span>
+                    <h4 class="font-semibold mt-2 mb-1">门锁联动 + 双认证</h4>
+                    <p class="text-sm text-brand-muted font-light">门没关好不运行，未到楼层打不开。认准<strong>国标 GB/T 21739</strong> 和 <strong>欧标 EN81</strong>。没有认证的品牌，不要选。</p>
+                </div>
+            </div>
+
+            <!-- 价格 -->
+            <h2 id="price">一台家用电梯到底多少钱？</h2>
+            <p>只看设备报价容易踩坑。完整落地成本包括四项：</p>
+
+            <table>
+                <thead><tr><th>费用项目</th><th>占比</th><th>说明</th></tr></thead>
+                <tbody>
+                    <tr><td class="font-semibold">设备费</td><td class="font-semibold">50-60%</td><td>电梯主机 + 轿厢 + 控制系统，国产品牌 8-18 万</td></tr>
+                    <tr><td class="font-semibold">井道施工</td><td class="font-semibold">20-30%</td><td>混凝土 3-6 万，钢结构/铝合金 2-4 万</td></tr>
+                    <tr><td class="font-semibold">安装调试</td><td class="font-semibold">10-15%</td><td>运输、吊装、调试、验收，约 1.5-3 万</td></tr>
+                    <tr><td class="font-semibold">装饰装修</td><td class="font-semibold">5-10%</td><td>轿厢内饰、厅门装饰、地坪等，看预算</td></tr>
+                </tbody>
+            </table>
+
+            <div class="callout callout-warn">
+                <strong>💰 关键提醒：</strong>要求报价含「设备+安装+运输+调试+验收」全包价。标准井道曳引方案全包落地约 <strong>15-25 万</strong>，螺杆方案约 <strong>12-18 万</strong>。
+            </div>
+
+            <!-- 井道 -->
+            <h2 id="well">井道类型怎么选？</h2>
+            <div class="grid md:grid-cols-2 gap-4 my-6">
+                <div class="border border-gray-100 p-6">
+                    <h4 class="font-semibold mb-1">混凝土井道</h4>
+                    <p class="text-sm text-brand-muted font-light">最稳固、隔音最好。施工 15-20 天，适合新建别墅。</p>
+                </div>
+                <div class="border border-gray-100 p-6">
+                    <h4 class="font-semibold mb-1">钢结构井道</h4>
+                    <p class="text-sm text-brand-muted font-light">施工 5-10 天，成本适中，可后期加装，适合自建房。</p>
+                </div>
+                <div class="border border-gray-100 p-6">
+                    <h4 class="font-semibold mb-1">铝合金井道</h4>
+                    <p class="text-sm text-brand-muted font-light">最轻便，施工 3-5 天，美观但成本略高，适合老房加装。</p>
+                </div>
+                <div class="border border-gray-100 p-6">
+                    <h4 class="font-semibold mb-1">无井道 / 一体化</h4>
+                    <p class="text-sm text-brand-muted font-light">自带井道结构，对建筑改动最小，已装修房屋首选。</p>
+                </div>
+            </div>
+
+            <!-- 避坑 -->
+            <h2 id="pitfalls">5个最容易踩的坑</h2>
+            <ol class="space-y-3">
+                <li><strong>只看设备价，不算总价</strong> — 安装、井道施工、验收都可能另收费。签合同前确认全包价。</li>
+                <li><strong>忽略售后网络</strong> — 电梯寿命 10-20 年，本地没有售后网点的品牌，小故障拖成大隐患。</li>
+                <li><strong>控制系统被锁定</strong> — 部分品牌加密控制系统，维修只能找原厂。优先选开放系统。</li>
+                <li><strong>盲目追求低价无机房</strong> — 部分低价产品用老旧曳引技术，噪音超 70dB。</li>
+                <li><strong>不查安装资质</strong> — 安装单位须具特种设备安装改造维修资质。没资质的报价再低也别选。</li>
+            </ol>
+
+            <!-- 五步法 -->
+            <h2 id="steps">选购五步法</h2>
+            <div class="grid grid-cols-5 gap-3 my-8">
+                <div class="step-card"><div class="text-brand-gold text-2xl font-bold mb-2">1</div><h4 class="font-semibold text-sm mb-1">量空间</h4><p class="text-xs text-brand-muted font-light">层高·底坑·井道</p></div>
+                <div class="step-card"><div class="text-brand-gold text-2xl font-bold mb-2">2</div><h4 class="font-semibold text-sm mb-1">定驱动</h4><p class="text-xs text-brand-muted font-light">有井道→曳引<br>没井道→螺杆</p></div>
+                <div class="step-card"><div class="text-brand-gold text-2xl font-bold mb-2">3</div><h4 class="font-semibold text-sm mb-1">核安全</h4><p class="text-xs text-brand-muted font-light">五项必配<br>查验双认证</p></div>
+                <div class="step-card"><div class="text-brand-gold text-2xl font-bold mb-2">4</div><h4 class="font-semibold text-sm mb-1">算总价</h4><p class="text-xs text-brand-muted font-light">设备+安装<br>+运输+验收</p></div>
+                <div class="step-card"><div class="text-brand-gold text-2xl font-bold mb-2">5</div><h4 class="font-semibold text-sm mb-1">锁售后</h4><p class="text-xs text-brand-muted font-light">本地网点<br>24h响应</p></div>
+            </div>
+
+            <div class="callout callout-info mt-12">
+                <strong>还不够？</strong>直接使用<a href="场景选梯.html" class="text-blue-600 font-medium underline underline-offset-2">场景选梯工具</a>，回答几个问题，系统自动匹配最适合你的品牌和方案。
+            </div>
+
+        </main>
+    </div>
+</div>
+
+<!-- CTA -->
+<section class="bg-brand-navy py-20 text-center">
+    <div class="max-w-xl mx-auto px-6">
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-4 tracking-tight">看完还是不知道怎么选？</h2>
+        <p class="text-white/35 font-light mb-10">3 分钟智能匹配，给你最适合的方案建议</p>
+        <a href="场景选梯.html" class="inline-flex items-center gap-2 bg-brand-gold hover:bg-brand-gold-light text-brand-navy px-10 py-4 font-semibold tracking-wide transition">
+            开始智能选梯 <i class="fa-solid fa-arrow-right text-sm"></i>
+        </a>
+    </div>
+</section>
+
+<footer class="bg-[#05080f] py-10 text-center text-white/20 text-xs font-light">
+    © 2026 HOMELIFT 家用电梯选购指南
+</footer>
+</body>
+</html>
