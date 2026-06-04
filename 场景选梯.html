@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>找到适合你家的电梯 - 卡叔聊电梯</title>
+<style>
+  :root {
+    --primary: #1a1a2e;
+    --accent: #e8751a;
+    --accent-light: #fff5ed;
+    --bg: #f8f7f4;
+    --card: #ffffff;
+    --border: #e2e0db;
+    --text: #2c2c2c;
+    --muted: #888;
+    --green: #2d8c4a;
+    --green-bg: #edf7f0;
+    --blue: #2563eb;
+    --blue-bg: #eff6ff;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* Progress Bar */
+  .progress-wrap {
+    background: var(--card);
+    padding: 20px 0 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+  }
+  .progress-inner {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .progress-steps {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    position: relative;
+  }
+  .progress-steps::before {
+    content: '';
+    position: absolute;
+    top: 14px;
+    left: 8%;
+    right: 8%;
+    height: 3px;
+    background: var(--border);
+    z-index: 0;
+  }
+  .step-dot {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: var(--border);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    z-index: 1;
+    transition: all 0.3s;
+    position: relative;
+  }
+  .step-dot.active { background: var(--accent); }
+  .step-dot.done { background: var(--green); }
+  .step-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--muted);
+    padding-bottom: 12px;
+  }
+  .step-labels span { text-align: center; width: 60px; }
+  .step-labels span.active { color: var(--accent); font-weight: 600; }
+  .step-labels span.done { color: var(--green); }
+
+  /* Main Container */
+  .container { max-width: 780px; margin: 0 auto; padding: 24px 20px 60px; }
+
+  /* Question Card */
+  .q-card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 36px 40px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    animation: fadeIn 0.3s ease;
+  }
+  @keyframes fadeIn { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+
+  .q-card .q-num {
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  .q-card h2 {
+    font-size: 22px;
+    margin-bottom: 6px;
+    color: var(--primary);
+  }
+  .q-card .q-desc {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+
+  /* Options */
+  .options { display: flex; flex-direction: column; gap: 10px; }
+  .option {
+    display: flex;
+    align-items: center;
+    padding: 16px 20px;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: #fafaf8;
+  }
+  .option:hover { border-color: var(--accent); background: var(--accent-light); }
+  .option.selected {
+    border-color: var(--accent);
+    background: var(--accent-light);
+    box-shadow: 0 0 0 3px rgba(232,117,26,0.12);
+  }
+  .option .icon {
+    font-size: 28px;
+    width: 44px;
+    flex-shrink: 0;
+    text-align: center;
+  }
+  .option .info { flex:1; margin-left: 12px; }
+  .option .info .title { font-size: 16px; font-weight: 600; }
+  .option .info .sub { font-size: 13px; color: var(--muted); margin-top: 2px; }
+  .option .check {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    flex-shrink: 0;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .option.selected .check {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .option.selected .check::after {
+    content: '✓';
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  /* Navigation */
+  .nav-btns {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  .btn {
+    padding: 12px 32px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+  }
+  .btn-back {
+    background: #fff;
+    color: var(--text);
+    border: 2px solid var(--border);
+  }
+  .btn-back:hover { background: #f5f5f5; }
+  .btn-next {
+    background: var(--accent);
+    color: #fff;
+  }
+  .btn-next:hover { opacity: 0.9; }
+  .btn-next:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  /* Result */
+  .result-wrap { display: none; }
+  .result-wrap.show { display: block; }
+
+  .result-header {
+    text-align: center;
+    padding: 40px 20px 32px;
+    background: var(--card);
+    border-radius: 16px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  }
+  .result-header .big-icon { font-size: 56px; margin-bottom: 12px; }
+  .result-header h2 { font-size: 26px; margin-bottom: 8px; }
+  .result-header .summary { color: var(--muted); font-size: 15px; }
+
+  .rec-card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border-left: 4px solid var(--accent);
+  }
+  .rec-card.top { border-left-color: var(--green); background: var(--green-bg); }
+  .rec-card h3 { font-size: 18px; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+  .rec-card h3 .badge {
+    font-size: 11px;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-weight: 600;
+  }
+  .badge.best { background: var(--green); color: #fff; }
+  .badge.alt { background: var(--blue); color: #fff; }
+  .rec-card .brand-tag {
+    display: inline-block;
+    background: var(--primary);
+    color: #fff;
+    padding: 3px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 8px 0 12px;
+  }
+  .rec-card .reasons { list-style: none; margin-top: 12px; }
+  .rec-card .reasons li {
+    padding: 6px 0;
+    font-size: 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .rec-card .reasons li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+
+  .result-actions {
+    text-align: center;
+    margin: 32px 0 60px;
+  }
+  .btn-restart {
+    background: #fff;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+    padding: 12px 36px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .btn-restart:hover { background: var(--accent-light); }
+
+  .answer-summary {
+    background: #fafaf8;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    font-size: 14px;
+  }
+  .answer-summary h4 { font-size: 14px; margin-bottom: 10px; color: var(--muted); }
+  .answer-summary .tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .answer-summary .tag {
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+  }
+  .answer-summary .tag .key { color: var(--muted); }
+
+  @media (max-width: 600px) {
+    .q-card { padding: 24px 20px; }
+    .option { padding: 12px 14px; }
+    .option .icon { font-size: 24px; width: 36px; }
+    .option .info .title { font-size: 15px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-wrap">
+  <div class="progress-inner">
+    <div class="progress-steps">
+      <div class="step-dot active" id="dot1">1</div>
+      <div class="step-dot" id="dot2">2</div>
+      <div class="step-dot" id="dot3">3</div>
+      <div class="step-dot" id="dot4">4</div>
+      <div class="step-dot" id="dot5">5</div>
+    </div>
+    <div class="step-labels">
+      <span class="active" id="label1">户型</span>
+      <span id="label2">井道</span>
+      <span id="label3">使用人</span>
+      <span id="label4">预算</span>
+      <span id="label5">偏好</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- QUESTION AREA -->
+  <div id="questions"></div>
+
+  <!-- RESULT AREA -->
+  <div class="result-wrap" id="resultWrap"></div>
+
+</div>
+
+<script>
+const questions = [
+  {
+    id: 'house',
+    num: '第 1 步',
+    title: '你家是什么户型？',
+    desc: '不同户型对电梯的空间要求和技术路线差异很大',
+    options: [
+      { value: 'villa3', icon: '🏠', title: '独栋别墅（3层及以上）', sub: '空间充裕，选择最多' },
+      { value: 'villa2', icon: '🏡', title: '独栋/联排别墅（2层）', sub: '最常见的情况' },
+      { value: 'penthouse', icon: '🏢', title: '顶楼复式 / 跃层', sub: '楼上楼下打通，空间紧凑' },
+      { value: 'selfbuild', icon: '🔨', title: '农村自建房', sub: '井道可自由设计，预算弹性大' },
+      { value: 'commercial', icon: '🏬', title: '商业/会所/其他', sub: '非家庭用途' },
+    ]
+  },
+  {
+    id: 'shaft',
+    num: '第 2 步',
+    title: '井道情况怎么样？',
+    desc: '井道决定了你能选什么类型的电梯',
+    options: [
+      { value: 'concrete', icon: '🧱', title: '有预留混凝土井道', sub: '空间固定，尺寸已定' },
+      { value: 'none_tight', icon: '📐', title: '没有井道，空间比较紧张', sub: '需要最节省空间的方案' },
+      { value: 'none_ok', icon: '📏', title: '没有井道，但空间够用', sub: '可以新建钢结构或铝合金井道' },
+      { value: 'unsure', icon: '❓', title: '不太确定，需要上门勘测', sub: '可以先看方案，后面再确认' },
+    ]
+  },
+  {
+    id: 'user',
+    num: '第 3 步',
+    title: '主要给谁用？',
+    desc: '这个问题的答案，直接决定了安全配置和操作方式',
+    options: [
+      { value: 'elderly', icon: '👴', title: '老人为主', sub: '行动不便，操作要简单，安全要求最高' },
+      { value: 'wheelchair', icon: '🦽', title: '有轮椅使用者', sub: '轿厢尺寸和开门宽度是关键' },
+      { value: 'family', icon: '👨‍👩‍👧‍👦', title: '全家日常使用', sub: '老人小孩都有，均衡考虑' },
+      { value: 'convenience', icon: '🛗', title: '主要为了方便/搬运', sub: '搬重物、购物车上下，载重优先' },
+    ]
+  },
+  {
+    id: 'budget',
+    num: '第 4 步',
+    title: '你的预算大概是多少？',
+    desc: '含设备+安装+井道，不含土建改造',
+    options: [
+      { value: 'under10', icon: '💰', title: '10 万以内', sub: '性价比优先，基础功能为主' },
+      { value: '10to15', icon: '💵', title: '10 - 15 万', sub: '主流预算，选择最多' },
+      { value: '15to25', icon: '💎', title: '15 - 25 万', sub: '品质优先，配置升级空间大' },
+      { value: 'above25', icon: '👑', title: '25 万以上', sub: '高端定制，不限预算' },
+    ]
+  },
+  {
+    id: 'preference',
+    num: '第 5 步',
+    title: '你最在意什么？',
+    desc: '选一个最看重的，帮我们精准匹配',
+    options: [
+      { value: 'quiet', icon: '🔇', title: '安静、平稳', sub: '噪音敏感，不能影响家人休息' },
+      { value: 'space', icon: '📦', title: '省空间', sub: '房子不大，每一寸都很宝贵' },
+      { value: 'custom', icon: '🎨', title: '个性化定制', sub: '尺寸特殊、装修风格有要求' },
+      { value: 'budget_first', icon: '🤑', title: '预算友好', sub: '够用就好，不想花冤枉钱' },
+      { value: 'safety', icon: '🛡️', title: '安全配置拉满', sub: '家里有老人小孩，安全第一' },
+    ]
+  },
+];
+
+let currentStep = 0;
+let answers = {};
+
+function renderQuestion() {
+  if (currentStep >= questions.length) {
+    showResult();
+    return;
+  }
+
+  const q = questions[currentStep];
+  const selected = answers[q.id];
+
+  const html = `
+    <div class="q-card">
+      <div class="q-num">${q.num} / 共 ${questions.length} 步</div>
+      <h2>${q.title}</h2>
+      <p class="q-desc">${q.desc}</p>
+      <div class="options">
+        ${q.options.map(o => `
+          <div class="option ${selected === o.value ? 'selected' : ''}" onclick="selectOption('${q.id}', '${o.value}', this)">
+            <span class="icon">${o.icon}</span>
+            <span class="info">
+              <span class="title">${o.title}</span>
+              <span class="sub">${o.sub}</span>
+            </span>
+            <span class="check"></span>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+    <div class="nav-btns">
+      ${currentStep > 0
+        ? '<button class="btn btn-back" onclick="prevStep()">← 上一步</button>'
+        : '<span></span>'
+      }
+      <button class="btn btn-next" id="nextBtn" ${!selected ? 'disabled' : ''} onclick="nextStep()">
+        ${currentStep === questions.length - 1 ? '🔍 查看推荐结果' : '下一步 →'}
+      </button>
+    </div>
+  `;
+
+  document.getElementById('questions').innerHTML = html;
+  updateProgress();
+}
+
+function selectOption(qid, value, el) {
+  answers[qid] = value;
+  // Update visual
+  document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('nextBtn').disabled = false;
+}
+
+function nextStep() {
+  if (!answers[questions[currentStep].id]) return;
+  currentStep++;
+  if (currentStep >= questions.length) {
+    document.getElementById('questions').style.display = 'none';
+    showResult();
+  } else {
+    renderQuestion();
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function prevStep() {
+  currentStep--;
+  document.getElementById('questions').style.display = '';
+  document.getElementById('resultWrap').classList.remove('show');
+  renderQuestion();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function updateProgress() {
+  for (let i = 1; i <= 5; i++) {
+    const dot = document.getElementById('dot' + i);
+    const label = document.getElementById('label' + i);
+    dot.className = 'step-dot';
+    label.className = '';
+    if (i - 1 < currentStep) { dot.classList.add('done'); label.classList.add('done'); }
+    if (i - 1 === currentStep) { dot.classList.add('active'); label.classList.add('active'); }
+  }
+}
+
+// ---- RECOMMENDATION ENGINE ----
+function getRecommendation() {
+  const a = answers;
+  let driveType = '';
+  let driveReason = '';
+  let brands = [];
+  let notes = [];
+
+  // 驱动方式判断
+  if (a.house === 'penthouse') {
+    driveType = '螺杆式（电缸螺杆）';
+    driveReason = '顶楼复式对噪音极度敏感，且通常没有底坑条件。螺杆电梯噪音极低、无需底坑、对土建要求最小，是复式楼的首选方案。';
+  } else if (a.house === 'villa3' && a.budget === 'above25') {
+    driveType = '曳引式（龙门架）';
+    driveReason = '三层及以上别墅，提升高度大、使用频率高，曳引式运行平稳高效，龙门架结构最稳固。预算充裕时这是最优解。';
+  } else if (a.shaft === 'concrete' && a.budget !== 'under10') {
+    driveType = '曳引式';
+    driveReason = '已有混凝土井道，安装曳引电梯条件最好，运行平稳、速度快、寿命长。';
+  } else if (a.shaft === 'none_tight') {
+    driveType = '螺杆式';
+    driveReason = '空间紧张时螺杆电梯占用的井道尺寸最小，且无需底坑，是紧凑空间的最优解。';
+  } else if (a.preference === 'quiet') {
+    driveType = '螺杆式（优先）或 曳引式（高端款）';
+    driveReason = '噪音敏感场景，螺杆电梯运行最安静；如果预算和空间允许，高端曳引式配合永磁同步主机也很安静。';
+  } else if (a.user === 'wheelchair') {
+    driveType = '曳引式（龙门架）';
+    driveReason = '轮椅用户需要轿厢空间大、开门宽、运行平稳，龙门架曳引式是最佳选择。';
+  } else if (a.budget === 'under10') {
+    driveType = '曳引式（背包架）或 螺杆式（基础款）';
+    driveReason = '预算有限时，背包架曳引式性价比高；如果空间也紧张，螺杆式基础款也是好选择。';
+  } else {
+    driveType = '曳引式（龙门架/背包架）';
+    driveReason = '综合你的条件，曳引式电梯在平稳性、速度、寿命方面表现均衡，是大多数家庭的选择。';
+  }
+
+  // 品牌匹配
+  if (a.budget === 'under10' || (a.preference === 'budget_first' && a.budget !== 'above25')) {
+    brands.push({ name: '易家 Eachar', reason: '主打性价比，EA600/800/900系列覆盖不同预算，2015年研发起步，2023年落地，产品成熟度不错。同等配置下价格有优势，适合预算敏感型消费者。', level: 'best' });
+  }
+  if (a.house === 'penthouse' || a.shaft === 'none_tight' || a.preference === 'quiet') {
+    brands.push({ name: '科锐曼', reason: '电缸螺杆专家，专攻复式楼和顶楼场景。噪音极低、无需底坑、土建要求小。如果你住顶楼复式，科锐曼就是这个细分领域的首选。', level: brands.length === 0 ? 'best' : 'alt' });
+  }
+  if (a.preference === 'custom' || a.house === 'selfbuild' || a.shaft === 'unsure') {
+    brands.push({ name: '怡安', reason: '极限非标能力行业领先——别人做不了的尺寸、井道、装修风格，怡安能做。适合自建房、特殊户型、个性化需求强烈的消费者。', level: brands.length === 0 ? 'best' : 'alt' });
+  }
+  if (a.house === 'villa3' || a.user === 'wheelchair' || a.budget === 'above25' || a.preference === 'safety') {
+    brands.push({ name: '格尔森', reason: '工厂规模大，非标能力强，行业口碑好。对于大宅、有轮椅需求、高端定制、安全配置要求高的场景，格尔森的制造能力和品控是保障。', level: brands.length === 0 ? 'best' : 'alt' });
+  }
+  if (brands.length === 0) {
+    brands.push({ name: '易家 Eachar', reason: '综合你的条件，易家覆盖范围广、性价比突出，是稳妥的选择。', level: 'best' });
+    brands.push({ name: '格尔森', reason: '如果预算允许，格尔森的制造能力和品控更扎实。', level: 'alt' });
+  }
+
+  // 确保有 best
+  if (!brands.find(b => b.level === 'best')) {
+    brands[0].level = 'best';
+  }
+
+  // 备注
+  if (a.shaft === 'unsure') {
+    notes.push('建议预约上门勘测确认井道条件，这是最关键的一步，会直接影响方案和报价。');
+  }
+  if (a.user === 'elderly' || a.user === 'wheelchair') {
+    notes.push('务必选择带应急平层功能（停电自动到最近层开门）和轿厢内应急通话的配置。');
+  }
+  if (a.house === 'penthouse') {
+    notes.push('复式楼装电梯要确认物业是否允许、楼板是否需要加固，这些前置条件建议提前确认。');
+  }
+  if (a.budget === 'under10') {
+    notes.push('10万以内预算需要控制井道成本（铝合金比钢结构便宜）和装饰成本（标配即可，后期软装）。');
+  }
+
+  return { driveType, driveReason, brands, notes };
+}
+
+function showResult() {
+  const r = getRecommendation();
+  const qLabel = { house: '户型', shaft: '井道', user: '使用人', budget: '预算', preference: '偏好' };
+  const vLabel = {
+    villa3: '独栋别墅（3层+）', villa2: '独栋/联排（2层）', penthouse: '顶楼复式', selfbuild: '自建房', commercial: '商业/其他',
+    concrete: '有预留混凝土井道', none_tight: '无井道·空间紧张', none_ok: '无井道·空间充裕', unsure: '不确定需勘测',
+    elderly: '老人为主', wheelchair: '有轮椅使用者', family: '全家日常', convenience: '方便/搬运',
+    under10: '10万以内', '10to15': '10-15万', '15to25': '15-25万', above25: '25万以上',
+    quiet: '安静平稳', space: '省空间', custom: '个性化定制', budget_first: '预算友好', safety: '安全第一',
+  };
+
+  const brandsHTML = r.brands.map((b, i) => `
+    <div class="rec-card ${b.level === 'best' ? 'top' : ''}">
+      <h3>
+        ${b.level === 'best' ? '🏆 首选推荐' : '🔹 备选方案'}
+        <span class="badge ${b.level === 'best' ? 'best' : 'alt'}">${b.level === 'best' ? '最匹配' : '可考虑'}</span>
+      </h3>
+      <div class="brand-tag">${b.name}</div>
+      <ul class="reasons"><li>${b.reason}</li></ul>
+    </div>
+  `).join('');
+
+  const notesHTML = r.notes.length > 0 ? `
+    <div class="rec-card" style="border-left-color: var(--blue); background: var(--blue-bg);">
+      <h3>💡 卡叔提醒</h3>
+      <ul class="reasons">
+        ${r.notes.map(n => `<li>${n}</li>`).join('')}
+      </ul>
+    </div>
+  ` : '';
+
+  const html = `
+    <div class="result-wrap show">
+      <div class="result-header">
+        <div class="big-icon">🎯</div>
+        <h2>你的选梯方案</h2>
+        <p class="summary">基于你的条件，我们推荐 <strong>${r.driveType}</strong></p>
+      </div>
+
+      <div class="answer-summary">
+        <h4>📋 你的选择</h4>
+        <div class="tag-row">
+          ${Object.entries(answers).map(([k,v]) =>
+            `<span class="tag"><span class="key">${qLabel[k]}：</span>${vLabel[v] || v}</span>`
+          ).join('')}
+        </div>
+      </div>
+
+      <div class="rec-card top" style="margin-bottom:16px;">
+        <h3>⚙️ 推荐驱动方式</h3>
+        <p style="font-size:14px;margin-top:8px;">${r.driveReason}</p>
+      </div>
+
+      ${brandsHTML}
+      ${notesHTML}
+
+      <div class="result-actions">
+        <p style="margin-bottom:16px;font-size:14px;color:var(--muted);">
+          以上推荐基于你填写的信息。实际选购还需要上门勘测确认。<br>
+          如需精准报价，请联系我们的经销商获取方案。
+        </p>
+        <button class="btn-restart" onclick="restart()">🔄 重新选一次</button>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('resultWrap').innerHTML = html;
+  document.getElementById('resultWrap').classList.add('show');
+  updateProgress();
+
+  // mark all done
+  for (let i = 1; i <= 5; i++) {
+    document.getElementById('dot' + i).className = 'step-dot done';
+    document.getElementById('label' + i).className = 'done';
+  }
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function restart() {
+  currentStep = 0;
+  answers = {};
+  document.getElementById('questions').style.display = '';
+  document.getElementById('resultWrap').classList.remove('show');
+  document.getElementById('resultWrap').innerHTML = '';
+  renderQuestion();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Init
+renderQuestion();
+</script>
+</body>
+</html>

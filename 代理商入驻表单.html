@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>代理商入驻申请 - 卡叔聊电梯</title>
+<style>
+  :root {
+    --primary: #1a1a2e;
+    --accent: #e8751a;
+    --bg: #f8f7f4;
+    --card: #ffffff;
+    --border: #e2e0db;
+    --text: #2c2c2c;
+    --muted: #888;
+    --success: #2d8c4a;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .header {
+    background: var(--primary);
+    color: #fff;
+    padding: 40px 0 32px;
+    text-align: center;
+  }
+  .header h1 { font-size: 28px; margin-bottom: 8px; }
+  .header p { color: rgba(255,255,255,0.7); font-size: 15px; }
+  .header .badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    margin-top: 12px;
+  }
+  .container { max-width: 780px; margin: 0 auto; padding: 0 20px; }
+  .intro {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin: -20px auto 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    font-size: 15px;
+    line-height: 1.8;
+  }
+  .intro strong { color: var(--accent); }
+  .intro ul { margin: 8px 0 0 20px; }
+  .intro li { margin-bottom: 4px; }
+
+  .section {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+  }
+  .section h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section h2 .num {
+    background: var(--accent);
+    color: #fff;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .field { margin-bottom: 18px; }
+  .field label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--primary);
+  }
+  .field label .required { color: #e03131; margin-left: 2px; }
+  .field label .hint { font-weight: 400; color: var(--muted); font-size: 12px; }
+  .field input, .field select, .field textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--text);
+    background: #fafaf8;
+    transition: border-color 0.2s;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: #fff;
+  }
+  .field textarea { min-height: 100px; resize: vertical; }
+  .field .file-hint { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+  .case-block {
+    border: 1px dashed var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 16px;
+    background: #fafaf8;
+  }
+  .case-block h4 {
+    font-size: 14px;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .flow-list { list-style: none; }
+  .flow-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .flow-list li:last-child { border-bottom: none; }
+  .flow-list .flow-step {
+    background: var(--primary);
+    color: #fff;
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .flow-list .flow-label { font-weight: 600; width: 80px; flex-shrink: 0; font-size: 14px; }
+  .flow-list textarea { flex: 1; min-height: 36px; }
+
+  .submit-area {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin: 20px 0 60px;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+    text-align: center;
+  }
+  .submit-area .note {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+  .submit-area .note a { color: var(--accent); }
+  .btn-submit {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 14px 48px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .btn-submit:hover { opacity: 0.9; }
+  .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  @media (max-width: 600px) {
+    .row, .row-3 { grid-template-columns: 1fr; }
+    .section { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🏗️ 代理商入驻申请</h1>
+  <p>加入「卡叔聊电梯」独立站经销商网络，让更多消费者找到你</p>
+  <div class="badge">提交后 1-3 个工作日完成审核</div>
+</div>
+
+<div class="container">
+
+  <div class="intro">
+    <p><strong>为什么入驻？</strong></p>
+    <ul>
+      <li>独立站面向全国消费者，帮你<strong>免费获客</strong>——消费者按区域匹配到你的门店</li>
+      <li>无需自己建站投广告，我们帮你做<strong>品牌背书和信任建立</strong></li>
+      <li>审核通过后，你的公司信息、服务能力、真实案例将在独立站展示</li>
+      <li>每一条咨询线索直接推送给你，<strong>成交与否完全由你掌控</strong></li>
+    </ul>
+    <p style="margin-top:12px;font-size:13px;color:var(--muted);">⚠️ 请如实填写。卡叔会逐一审核，虚假信息不予通过。</p>
+  </div>
+
+  <form id="dealerForm">
+
+    <!-- 一、基本信息 -->
+    <div class="section">
+      <h2><span class="num">1</span> 基本信息</h2>
+      <div class="row">
+        <div class="field">
+          <label>公司全称 <span class="required">*</span></label>
+          <input type="text" name="company_name" required placeholder="营业执照上的全称">
+        </div>
+        <div class="field">
+          <label>成立年份</label>
+          <input type="text" name="founded_year" placeholder="如：2018">
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label>所在省份/城市 <span class="required">*</span></label>
+          <input type="text" name="city" required placeholder="如：浙江省杭州市">
+        </div>
+        <div class="field">
+          <label>服务覆盖区域 <span class="required">*</span></label>
+          <input type="text" name="coverage" required placeholder="如：杭州、嘉兴、湖州">
+        </div>
+      </div>
+      <div class="field">
+        <label>办公地址</label>
+        <input type="text" name="address" placeholder="详细地址">
+      </div>
+      <div class="row">
+        <div class="field">
+          <label>联系人姓名 <span class="required">*</span></label>
+          <input type="text" name="contact_name" required>
+        </div>
+        <div class="field">
+          <label>联系人手机 <span class="required">*</span></label>
+          <input type="tel" name="contact_phone" required placeholder="仅用于审核沟通，不公开">
+        </div>
+      </div>
+      <div class="field">
+        <label>一句话介绍 <span class="required">*</span> <span class="hint">（将展示在独立站上，30字以内）</span></label>
+        <input type="text" name="tagline" required maxlength="30" placeholder="如：深耕杭州家用电梯10年，200+家庭的选择">
+      </div>
+    </div>
+
+    <!-- 二、代理品牌 -->
+    <div class="section">
+      <h2><span class="num">2</span> 代理品牌与产品</h2>
+      <div class="field">
+        <label>代理/经销的品牌 <span class="required">*</span> <span class="hint">（可多选）</span></label>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:4px;">
+          <label style="display:flex;align-items:center;gap:6px;font-weight:400;cursor:pointer;">
+            <input type="checkbox" name="brands" value="易家(Eachar)"> 易家(Eachar)
+          </label>
+          <label style="display:flex;align-items:center;gap:6px;font-weight:400;cursor:pointer;">
+            <input type="checkbox" name="brands" value="怡安"> 怡安
+          </label>
+          <label style="display:flex;align-items:center;gap:6px;font-weight:400;cursor:pointer;">
+            <input type="checkbox" name="brands" value="格尔森"> 格尔森
+          </label>
+          <label style="display:flex;align-items:center;gap:6px;font-weight:400;cursor:pointer;">
+            <input type="checkbox" name="brands" value="科锐曼"> 科锐曼
+          </label>
+          <label style="display:flex;align-items:center;gap:6px;font-weight:400;">
+            <input type="checkbox" name="brands" value="other"> 其他：
+            <input type="text" name="brands_other" placeholder="请注明" style="width:120px;padding:4px 8px;">
+          </label>
+        </div>
+      </div>
+      <div class="field">
+        <label>主推品牌及原因</label>
+        <textarea name="main_brand_reason" placeholder="为什么主推这个品牌？它的优势是什么？"></textarea>
+      </div>
+    </div>
+
+    <!-- 三、团队与服务能力 -->
+    <div class="section">
+      <h2><span class="num">3</span> 团队与服务能力</h2>
+      <div class="row-3">
+        <div class="field">
+          <label>团队总人数</label>
+          <input type="number" name="team_size" placeholder="人">
+        </div>
+        <div class="field">
+          <label>安装技师人数</label>
+          <input type="number" name="install_team" placeholder="人">
+        </div>
+        <div class="field">
+          <label>售后维修人数</label>
+          <input type="number" name="service_team" placeholder="人">
+        </div>
+      </div>
+      <div class="row-3">
+        <div class="field">
+          <label>年安装量</label>
+          <input type="text" name="annual_installs" placeholder="台/年">
+        </div>
+        <div class="field">
+          <label>累计安装量</label>
+          <input type="text" name="total_installs" placeholder="台">
+        </div>
+        <div class="field">
+          <label>从勘测到交付周期</label>
+          <input type="text" name="delivery_cycle" placeholder="如：30-45天">
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:8px;">
+        <label style="display:flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;">
+          <input type="checkbox" name="capabilities" value="自有安装团队"> 自有安装团队
+        </label>
+        <label style="display:flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;">
+          <input type="checkbox" name="capabilities" value="自有维保团队"> 自有维保团队
+        </label>
+        <label style="display:flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;">
+          <input type="checkbox" name="capabilities" value="土建/井道施工"> 土建/井道施工
+        </label>
+        <label style="display:flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;">
+          <input type="checkbox" name="capabilities" value="免费上门勘测"> 免费上门勘测
+        </label>
+        <label style="display:flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;">
+          <input type="checkbox" name="capabilities" value="有实体展厅"> 有实体展厅
+        </label>
+      </div>
+    </div>
+
+    <!-- 四、服务流程 -->
+    <div class="section">
+      <h2><span class="num">4</span> 服务流程</h2>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">简要描述每个环节你们是怎么做的（消费者会看到）</p>
+      <ul class="flow-list">
+        <li>
+          <span class="flow-step">1</span>
+          <span class="flow-label">首次咨询</span>
+          <textarea name="flow_consult" rows="1" placeholder="如：电话/微信/到店，了解客户需求"></textarea>
+        </li>
+        <li>
+          <span class="flow-step">2</span>
+          <span class="flow-label">上门勘测</span>
+          <textarea name="flow_survey" rows="1" placeholder="如：2天内上门，免费测量井道尺寸"></textarea>
+        </li>
+        <li>
+          <span class="flow-step">3</span>
+          <span class="flow-label">方案设计</span>
+          <textarea name="flow_design" rows="1" placeholder="如：3天出方案，含品牌推荐+报价"></textarea>
+        </li>
+        <li>
+          <span class="flow-step">4</span>
+          <span class="flow-label">安装交付</span>
+          <textarea name="flow_install" rows="1" placeholder="如：签约后30天到货，7天安装调试"></textarea>
+        </li>
+        <li>
+          <span class="flow-step">5</span>
+          <span class="flow-label">售后维保</span>
+          <textarea name="flow_service" rows="1" placeholder="如：每年2次免费维保，24小时响应"></textarea>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 五、售后 -->
+    <div class="section">
+      <h2><span class="num">5</span> 售后服务</h2>
+      <div class="row">
+        <div class="field">
+          <label>维保频次</label>
+          <input type="text" name="maintenance_freq" placeholder="如：2次/年">
+        </div>
+        <div class="field">
+          <label>维保费用</label>
+          <input type="text" name="maintenance_fee" placeholder="如：800元/次 或 免费">
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label>紧急响应时效</label>
+          <input type="text" name="response_time" placeholder="如：市区2小时，郊区4小时">
+        </div>
+        <div class="field">
+          <label>质保年限</label>
+          <input type="text" name="warranty" placeholder="如：整机2年，关键部件5年">
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:8px;">
+        <label style="display:flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;">
+          <input type="checkbox" name="service_features" value="24小时热线"> 24小时服务热线
+        </label>
+        <label style="display:flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;">
+          <input type="checkbox" name="service_features" value="远程监控"> 远程监控/物联网
+        </label>
+        <label style="display:flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;">
+          <input type="checkbox" name="service_features" value="年检代办"> 年检代办
+        </label>
+        <label style="display:flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;">
+          <input type="checkbox" name="service_features" value="配件备货"> 常用配件备货
+        </label>
+      </div>
+    </div>
+
+    <!-- 六、服务案例 -->
+    <div class="section">
+      <h2><span class="num">6</span> 服务案例</h2>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">请至少填写 1 个案例（最多 3 个）。真实案例是消费者最看重的信任资产。</p>
+
+      <div class="case-block">
+        <h4>📌 案例一</h4>
+        <div class="row">
+          <div class="field"><label>所在城市/小区</label><input type="text" name="case1_location" placeholder="如：杭州·西溪诚园"></div>
+          <div class="field"><label>户型/楼层</label><input type="text" name="case1_house" placeholder="如：三层独栋别墅"></div>
+        </div>
+        <div class="row">
+          <div class="field"><label>安装品牌与型号</label><input type="text" name="case1_brand" placeholder="如：易家 EA800"></div>
+          <div class="field"><label>总费用（约）</label><input type="text" name="case1_cost" placeholder="如：12-15万"></div>
+        </div>
+        <div class="field">
+          <label>客户需求与方案亮点</label>
+          <textarea name="case1_desc" placeholder="客户为什么装电梯？你们怎么解决的？有什么特别之处？"></textarea>
+        </div>
+        <div class="field">
+          <label>案例照片 <span class="hint">（最多3张，jpg/png，每张不超过5MB）</span></label>
+          <input type="file" name="case1_photos" accept="image/*" multiple>
+        </div>
+      </div>
+
+      <div class="case-block">
+        <h4>📌 案例二（选填）</h4>
+        <div class="row">
+          <div class="field"><label>所在城市/小区</label><input type="text" name="case2_location"></div>
+          <div class="field"><label>户型/楼层</label><input type="text" name="case2_house"></div>
+        </div>
+        <div class="row">
+          <div class="field"><label>安装品牌与型号</label><input type="text" name="case2_brand"></div>
+          <div class="field"><label>总费用（约）</label><input type="text" name="case2_cost"></div>
+        </div>
+        <div class="field"><label>客户需求与方案亮点</label><textarea name="case2_desc"></textarea></div>
+        <div class="field"><label>案例照片</label><input type="file" name="case2_photos" accept="image/*" multiple></div>
+      </div>
+    </div>
+
+    <!-- 七、优势 -->
+    <div class="section">
+      <h2><span class="num">7</span> 为什么选你们</h2>
+      <div class="field">
+        <label>和同行比，你们最大的 3 个优势 <span class="required">*</span></label>
+        <textarea name="advantages" required placeholder="请诚实填写，这是消费者决策的关键信息&#10;如：1. 深耕本地10年，客户转介绍率60%&#10;2. 自有安装团队不外包，品质可控&#10;3. 24小时响应，半夜困人也有人来"></textarea>
+      </div>
+    </div>
+
+    <!-- 八、补充材料 -->
+    <div class="section">
+      <h2><span class="num">8</span> 补充材料</h2>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">以下材料有助于审核通过和展示效果，有就上传</p>
+      <div class="field">
+        <label>公司 Logo <span class="hint">（高清，AI/SVG/PNG）</span></label>
+        <input type="file" name="logo" accept="image/*,.svg,.ai">
+      </div>
+      <div class="field">
+        <label>展厅/办公室照片 <span class="hint">（最多3张）</span></label>
+        <input type="file" name="office_photos" accept="image/*" multiple>
+      </div>
+      <div class="field">
+        <label>营业执照 <span class="hint">（仅用于审核，不对外展示）</span></label>
+        <input type="file" name="license" accept="image/*,.pdf">
+      </div>
+    </div>
+
+    <!-- 提交 -->
+    <div class="submit-area">
+      <p class="note">
+        提交即表示你同意以上信息用于「卡叔聊电梯」独立站展示。<br>
+        审核通过前信息不会公开；审核不通过会告知原因。
+      </p>
+      <button type="submit" class="btn-submit">📩 提交申请</button>
+      <p id="submitMsg" style="margin-top:12px;font-size:14px;"></p>
+    </div>
+
+  </form>
+</div>
+
+<script>
+document.getElementById('dealerForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const btn = this.querySelector('.btn-submit');
+  const msg = document.getElementById('submitMsg');
+  btn.disabled = true;
+  btn.textContent = '提交中...';
+  msg.style.color = '#888';
+  msg.textContent = '';
+
+  const formData = new FormData(this);
+  const data = {};
+  formData.forEach((v, k) => {
+    if (data[k]) {
+      data[k] = Array.isArray(data[k]) ? [...data[k], v] : [data[k], v];
+    } else {
+      data[k] = v;
+    }
+  });
+
+  // 先做一个简单的本地存储 + JSON 导出，后续接入后端 API
+  const json = JSON.stringify(data, null, 2);
+  const blob = new Blob([json], {type: 'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = '代理商入驻_' + (data.company_name || '未填公司名') + '.json';
+  a.click();
+  URL.revokeObjectURL(url);
+
+  msg.style.color = '#2d8c4a';
+  msg.textContent = '✅ 申请数据已生成！请将下载的 JSON 文件发送给卡叔完成审核。审核周期 1-3 个工作日。';
+  btn.textContent = '已提交 ✓';
+});
+</script>
+</body>
+</html>
