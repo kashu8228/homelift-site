@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>品牌库 - 家用电梯四大品牌深度对比</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a1a2e',
+                        secondary: '#16213e',
+                        accent: '#e94560',
+                        gold: '#d4af37',
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .gradient-bg {
+                background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            }
+            .card-hover {
+                transition: all 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 导航栏 -->
+    <nav class="gradient-bg text-white py-4 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold">家用电梯选购指南</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="hover:text-gold">首页</a>
+                <a href="brands.html" class="text-gold font-medium">品牌库</a>
+                <a href="场景选梯.html" class="hover:text-gold">场景选梯</a>
+                <a href="代理商入驻表单.html" class="hover:text-gold">代理商入驻</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="gradient-bg py-20 text-white text-center">
+        <div class="max-w-4xl mx-auto px-4">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">四大品牌深度对比</h1>
+            <p class="text-white/70 text-xl">不站任何品牌立场，只帮你搞清楚：你家的情况，更适合谁</p>
+        </div>
+    </section>
+
+    <!-- 品牌速览 -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-2xl font-bold text-center mb-12">品牌速览总表</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full bg-white rounded-xl shadow-lg">
+                    <thead class="gradient-bg text-white">
+                        <tr>
+                            <th class="py-4 px-6 text-left">对比维度</th>
+                            <th class="py-4 px-6 text-center">易家 Eachar</th>
+                            <th class="py-4 px-6 text-center">格尔森</th>
+                            <th class="py-4 px-6 text-center">怡安</th>
+                            <th class="py-4 px-6 text-center">科锐曼</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100">
+                        <tr>
+                            <td class="py-4 px-6 font-medium text-gray-700">一句话定位</td>
+                            <td class="py-4 px-6 text-center">品质均衡，价格友好</td>
+                            <td class="py-4 px-6 text-center">工厂大，非标强</td>
+                            <td class="py-4 px-6 text-center">极限定制，什么都能做</td>
+                            <td class="py-4 px-6 text-center">螺杆专家，复式首选</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="py-4 px-6 font-medium text-gray-700">技术路线</td>
+                            <td class="py-4 px-6 text-center">曳引驱动</td>
+                            <td class="py-4 px-6 text-center">-</td>
+                            <td class="py-4 px-6 text-center">-</td>
+                            <td class="py-4 px-6 text-center">电缸螺杆</td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 px-6 font-medium text-gray-700">价格带</td>
+                            <td class="py-4 px-6 text-center">10-20万</td>
+                            <td class="py-4 px-6 text-center">15-25万</td>
+                            <td class="py-4 px-6 text-center">18-35万</td>
+                            <td class="py-4 px-6 text-center">12-18万</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="py-4 px-6 font-medium text-gray-700">非标能力</td>
+                            <td class="py-4 px-6 text-center">⭐⭐</td>
+                            <td class="py-4 px-6 text-center">⭐⭐⭐⭐</td>
+                            <td class="py-4 px-6 text-center">⭐⭐⭐⭐⭐</td>
+                            <td class="py-4 px-6 text-center">⭐⭐</td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 px-6 font-medium text-gray-700">最适合谁</td>
+                            <td class="py-4 px-6 text-center text-sm">预算敏感<br/>追求品质均衡</td>
+                            <td class="py-4 px-6 text-center text-sm">复杂定制需求<br/>对品质要求高</td>
+                            <td class="py-4 px-6 text-center text-sm">井道条件苛刻<br/>别人做不了的</td>
+                            <td class="py-4 px-6 text-center text-sm">顶楼复式<br/>无底坑需求</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 品牌详情 -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-2xl font-bold text-center mb-12">品牌深度解析</h2>
+            
+            <!-- 易家 -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 mb-8 card-hover">
+                <div class="flex items-start gap-6">
+                    <div class="w-20 h-20 bg-orange-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <span class="text-orange-600 font-bold text-2xl">易</span>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-4">
+                            <h3 class="text-2xl font-bold">易家 Eachar</h3>
+                            <span class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-sm font-medium">性价比之选</span>
+                        </div>
+                        <p class="text-gray-600 mb-6">
+                            易家智慧电梯（湖州）有限公司，坐落于中国电梯之乡——浙江南浔。自2015年起，技术团队就已深入家用电梯行业进行产品技术研发，为国内别墅电梯产业提供了全新的产品架构。2023年完成南浔落地智造部署。
+                        </p>
+                        <div class="grid md:grid-cols-3 gap-4 mb-6">
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <h4 class="font-bold mb-2">核心理念</h4>
+                                <p class="text-gray-600 text-sm">安全为先，技术更优</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <h4 class="font-bold mb-2">工厂规模</h4>
+                                <p class="text-gray-600 text-sm">南浔工厂，2023投产</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <h4 class="font-bold mb-2">技术路线</h4>
+                                <p class="text-gray-600 text-sm">曳引驱动</p>
+                            </div>
+                        </div>
+                        <h4 class="font-bold mb-3">EA600 系列（入门级）</h4>
+                        <ul class="text-gray-600 space-y-2 mb-4">
+                            <li><i class="fa fa-check text-gold mr-2"></i>红外光幕安全防护</li>
+                            <li><i class="fa fa-check text-gold mr-2"></i>多种轿厢装饰可选（金属风 / 木纹系列 / 澳洲风情）</li>
+                            <li><i class="fa fa-check text-gold mr-2"></i>标配方案即包含不锈钢轿壁 + 岩板地坪</li>
+                        </ul>
+                        <div class="bg-blue-50 p-4 rounded-xl">
+                            <h4 class="font-bold text-blue-800 mb-2">适合人群</h4>
+                            <ul class="text-blue-700 space-y-1 text-sm">
+                                <li>• 预算在10-20万区间</li>
+                                <li>• 有标准井道条件</li>
+                                <li>• 追求品质均衡、不追求极端定制</li>
+                                <li>• 首次安装家用电梯、想省心</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 格尔森 -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 mb-8 card-hover">
+                <div class="flex items-start gap-6">
+                    <div class="w-20 h-20 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <span class="text-green-600 font-bold text-2xl">格</span>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-4">
+                            <h3 class="text-2xl font-bold">格尔森</h3>
+                            <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-medium">非标强者</span>
+                        </div>
+                        <p class="text-gray-600 mb-6">
+                            工厂规模在行业内较大，非标定制能力突出，在行业内有不错的口碑。能承接复杂定制需求。
+                        </p>
+                        <div class="grid md:grid-cols-3 gap-4 mb-6">
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <h4 class="font-bold mb-2">核心优势</h4>
+                                <p class="text-gray-600 text-sm">工厂规模大</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <h4 class="font-bold mb-2">非标能力</h4>
+                                <p class="text-gray-600 text-sm">⭐⭐⭐⭐</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <h4 class="font-bold mb-2">价格带</h4>
+                                <p class="text-gray-600 text-sm">15-25万</p>
+                            </div>
+                        </div>
+                        <div class="bg-green-50 p-4 rounded-xl">
+                            <h4 class="font-bold text-green-800 mb-2">适合人群</h4>
+                            <ul class="text-green-700 space-y-1 text-sm">
+                                <li>• 井道条件不标准，需要定制方案</li>
+                                <li>• 对品质和工艺有较高要求</li>
+                                <li>• 愿意为更好的方案支付溢价</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 怡安 -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 mb-8 card-hover">
+                <div class="flex items-start gap-6">
+                    <div class="w-20 h-20 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <span class="text-purple-600 font-bold text-2xl">怡</span>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-4">
+                            <h3 class="text-2xl font-bold">怡安</h3>
+                            <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-medium">极限定制</span>
+                        </div>
+                        <p class="text-gray-600 mb-6">
+                            行业公认的"极限非标"能力——别人做不了的，怡安能做。适合井道条件极其苛刻的场景。
+                        </p>
+                        <div class="grid md:grid-cols-3 gap-4 mb-6">
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <h4 class="font-bold mb-2">核心优势</h4>
+                                <p class="text-gray-600 text-sm">什么都能定制</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <h4 class="font-bold mb-2">非标能力</h4>
+                                <p class="text-gray-600 text-sm">⭐⭐⭐⭐⭐</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <h4 class="font-bold mb-2">价格带</h4>
+                                <p class="text-gray-600 text-sm">18-35万</p>
+                            </div>
+                        </div>
+                        <div class="bg-purple-50 p-4 rounded-xl">
+                            <h4 class="font-bold text-purple-800 mb-2">适合人群</h4>
+                            <ul class="text-purple-700 space-y-1 text-sm">
+                                <li>• 井道尺寸、形状、位置非常特殊</li>
+                                <li>• 普通品牌方案无法满足</li>
+                                <li>• 对定制能力要求极高</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 科锐曼 -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 card-hover">
+                <div class="flex items-start gap-6">
+                    <div class="w-20 h-20 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <span class="text-blue-600 font-bold text-2xl">科</span>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-4">
+                            <h3 class="text-2xl font-bold">科锐曼</h3>
+                            <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium">螺杆专家</span>
+                        </div>
+                        <p class="text-gray-600 mb-6">
+                            螺杆电梯专家，主打顶楼复式楼场景，电缸螺杆技术路线，无底坑方案首选。
+                        </p>
+                        <div class="grid md:grid-cols-3 gap-4 mb-6">
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <h4 class="font-bold mb-2">核心优势</h4>
+                                <p class="text-gray-600 text-sm">无底坑方案</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <h4 class="font-bold mb-2">技术路线</h4>
+                                <p class="text-gray-600 text-sm">电缸螺杆</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <h4 class="font-bold mb-2">价格带</h4>
+                                <p class="text-gray-600 text-sm">12-18万</p>
+                            </div>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-xl">
+                            <h4 class="font-bold text-blue-800 mb-2">适合人群</h4>
+                            <ul class="text-blue-700 space-y-1 text-sm">
+                                <li>• 顶楼复式、无底坑条件</li>
+                                <li>• 2-4层楼层</li>
+                                <li>• 对螺杆技术有偏好</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="gradient-bg py-16 text-white text-center">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-6">还是不知道选哪个？</h2>
+            <p class="text-white/70 text-lg mb-8">3分钟智能问卷，帮你精准匹配最适合的品牌</p>
+            <a href="场景选梯.html" class="inline-block bg-gold text-primary px-10 py-4 rounded-full font-bold text-lg hover:bg-yellow-500 transition">
+                开始智能匹配 <i class="fa fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-primary text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center text-white/50">
+            <p>© 2024 家用电梯选购指南. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
