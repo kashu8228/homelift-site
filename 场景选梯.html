@@ -227,6 +227,18 @@ function getRecommendation() {
 
     const floorHint = (a[5] === '5plus') ? ' 注意：5层以上建议选曳引式，螺杆式速度偏慢不适合高频多层使用。' : '';
     
+    // 增强匹配：多维度交叉
+    if (drive === '曳引式' && a[4] === 'low' && a[2] !== 'no') {
+        brands = ['易家 Eachar（EA600系列）'];
+        reason = '标准井道 + 经济预算 + 曳引方案，易家 EA600 是性价比首选。入门级标配红外光幕、不锈钢轿壁、岩板地坪。';
+    } else if (drive === '曳引式' && (a[4] === 'mid' || a[4] === 'high') && a[3] === 'family') {
+        brands = ['格尔森', '易家 Eachar（EA800系列）'];
+        reason = '全家使用 + 中等以上预算，推荐格尔森（德系品质、T78实心轨）或易家EA800（龙门架钢带、小井道友好）。';
+    } else if (a[2] === 'no' && a[1] === 'oldhouse') {
+        brands = ['科锐曼（D-B系列）'];
+        reason = '老房加装 + 无井道，科锐曼 D-B 系列铝合金框架，1m²可装，颜色/玻璃/背板全可定制。';
+    }
+    
     return { drive, brands, reason: reason + floorHint };
 }
 
